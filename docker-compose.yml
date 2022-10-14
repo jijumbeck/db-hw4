@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  Postgres:
+    container_name: IVANOVA_203
+    image: postgres:14.5
+    command: -c 'config_file=/etc/postgresql/postgresql.conf'
+    ports:
+      - "5432:5432/tcp"
+    environment:
+      - POSTGRES_PASSWORD=ivanova203
+      - POSTGRES_USER=ivanova203
+      - POSTGRES_DB=ivanova203
+    volumes:
+      - ./config/:/etc/postgresql/
+      - ./scripts/:/docker-entrypoint-initdb.d/
+      - ./data/:/var/lib/postgresql/data/
